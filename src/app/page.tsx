@@ -1,5 +1,4 @@
 import ProductList from "@/components/productList/ProductList";
-import Image from "next/image";
 import { Suspense } from "react";
 
 type Props = {

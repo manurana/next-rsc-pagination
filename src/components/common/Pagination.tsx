@@ -11,21 +11,19 @@ const Pagination = ({ numPages, activePage }: Props) => {
   const pathname = usePathname();
 
   return Array.from({ length: numPages }).map((_, i) => {
-    const pageNumber = i + 1;
+    const page = i + 1;
     return (
       <Link
-        key={pageNumber}
+        key={page}
         href={{
           pathname,
-          query: { page: pageNumber },
+          query: { page },
         }}
       >
         <span
-          className={`mr-2 ${
-            pageNumber === activePage ? "font-bold text-xl" : null
-          }`}
+          className={`mr-2 ${page === activePage ? "font-bold text-xl" : null}`}
         >
-          {pageNumber}
+          {page}
         </span>
       </Link>
     );
