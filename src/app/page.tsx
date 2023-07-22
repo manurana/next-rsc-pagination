@@ -9,7 +9,7 @@ export default function Home({ searchParams }: Props) {
   return (
     <div className="min-h-screen p-8">
       <div className="bg-slate-500 font-neutral-100 p-4">Header</div>
-      <div className="p-4">
+      <div className="max-w-2xl mx-auto">
         <Suspense
           fallback={<div className="bg-amber-300 text-black">Fallback</div>}
         >

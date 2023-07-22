@@ -1,16 +1,13 @@
 import Pagination from "@/components/common/Pagination";
+import Product, { ProductProps } from "./Product";
 
 type Props = {
   searchParams: { page?: string };
 };
 
-type Product = {
-  id: number;
-  title: string;
-};
-
 const PAGE_SIZE = 10;
-const BASE_URL = "https://dummyjson.com/products?select=id,title";
+const BASE_URL =
+  "https://dummyjson.com/products?select=id,title,description,images";
 
 const getProducts = async ({ page = 1 }: { page?: number }) => {
   const skip = (page - 1) * PAGE_SIZE;
@@ -26,20 +23,20 @@ const ProductList = async ({ searchParams }: Props) => {
     page: activePage,
   });
   const count = data.total;
-  const products = data.products as Product[];
+  const products = data.products as ProductProps[];
 
   return (
-    <div>
-      <div className="mb-4">Count: {count}</div>
-      <div className="my-4">
+    <div className="py-4">
+      <div className="mx-auto grid grid-cols-2 gap-4 mb-4">
         {products.map((product) => (
-          <div key={product.id}>{`${product.id}. ${product.title}`}</div>
+          <Product key={product.id} product={product} />
         ))}
       </div>
       <Pagination
         numPages={Math.ceil(count / PAGE_SIZE)}
         activePage={activePage}
       />
+      <div className="mb-4">Count: {count}</div>
     </div>
   );
 };
