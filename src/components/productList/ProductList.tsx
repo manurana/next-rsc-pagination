@@ -21,7 +21,7 @@ const ProductList = async ({ searchParams }: Props) => {
       <div className="mx-auto grid grid-cols-2 gap-4 mb-4">
         {products}
 
-        <LoadMore />
+        <LoadMore pageSize={PAGE_SIZE} />
       </div>
       {/* <Pagination
         numPages={Math.ceil(total / PAGE_SIZE)}
